@@ -1,4 +1,4 @@
-# shopping
-购物小程序
 # 小程序
 hello
+这是一个购物小程序，
+this
