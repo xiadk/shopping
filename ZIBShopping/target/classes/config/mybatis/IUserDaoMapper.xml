@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ZIBShopping.dao.IUserDao">
+	<select id="findUserByPhone" resultType="com.ZIBShopping.dto.User">
+		SELECT id,name,sex,birthday as bir,phone,password,school FROM sign_user WHERE phone=#{param1}
+	</select>
+	
+	<insert id="register" parameterType="com.ZIBShopping.dto.User">
+	　　	<selectKey keyProperty="id" resultType="int" order="BEFORE">
+	      	select user_sequence.nextval from dual
+	    </selectKey>
+	     insert into sign_user(id,name,sex,birthday,phone,password,school,create_time) 
+	     values(#{id},#{name},#{sex},#{bir},#{phone},#{password},#{school},#{createTime})
+	</insert>
+	<select id="findUserById" resultType="com.ZIBShopping.dto.User">
+		SELECT id,name,sex,birthday as bir,phone,password,school FROM sign_user WHERE id=#{param1}
+	</select>
+</mapper> 
