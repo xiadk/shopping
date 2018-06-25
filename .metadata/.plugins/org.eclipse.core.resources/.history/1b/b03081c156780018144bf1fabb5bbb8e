@@ -1,0 +1,15 @@
+package com.ZIBShopping.service;
+
+import java.util.List;
+
+import com.ZIBShopping.dto.User;
+
+public interface UserService {
+	
+	public Integer register(User user);
+	
+	public User findUserById(int id);
+	
+	public User findUserByPhone(Long phone);
+	
+}
