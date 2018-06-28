@@ -1,4 +1,0 @@
-#Tomcat publish data
-#Mon Jun 25 17:20:41 CST 2018
-org.eclipse.jst.j2ee.server\:/binary\:E\:\\maven\\repo\\org\\springframework\\spring-web\\4.2.6.RELEASE\\spring-web-4.2.6.RELEASE.jar=F\:\\apache-tomcat-7.0.72-windows-x64\\apache-tomcat-7.0.72\\webapps\\ZIBShopping\\WEB-INF\\lib\\spring-web-4.2.6.RELEASE.jar
-org.eclipse.jst.j2ee.server\:ZIBShopping=F\:\\apache-tomcat-7.0.72-windows-x64\\apache-tomcat-7.0.72\\webapps\\ZIBShopping
