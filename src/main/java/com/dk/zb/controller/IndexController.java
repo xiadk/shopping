@@ -8,7 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("he")
@@ -19,12 +21,13 @@ public class IndexController {
 
     @ResponseBody
     @RequestMapping("index")
-    public Object index(){
+    public Map<String,String> index(){
 
         System.out.println("s");
         List<Student> list = studentDao.findAll();
-
-        return "lss";
+        Map<String,String> map = new HashMap<>();
+        map.put("name","dk");
+        return map;
     }
 
 }
