@@ -1,8 +1,8 @@
-package com.dk.zb.controller;
+package com.ZIBShopping.controller;
 
 
-import com.dk.zb.dto.Student;
-import com.dk.zb.dao.StudentDao;
+import com.ZIBShopping.dao.StudentDao;
+import com.ZIBShopping.dto.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

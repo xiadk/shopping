@@ -1,4 +1,4 @@
-package com.dk.zb.dto;
+package com.ZIBShopping.dto;
 
 import javax.persistence.*;
 import java.io.Serializable;

@@ -1,4 +1,4 @@
-package com.dk.zb;
+package com.ZIBShopping;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

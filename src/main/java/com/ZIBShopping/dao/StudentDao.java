@@ -1,6 +1,6 @@
-package com.dk.zb.dao;
+package com.ZIBShopping.dao;
 
-import com.dk.zb.dto.Student;
+import com.ZIBShopping.dto.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
