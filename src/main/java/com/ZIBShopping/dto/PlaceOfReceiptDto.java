@@ -17,21 +17,24 @@ public class PlaceOfReceiptDto implements Serializable {
     @Column(name="user_id")
     private String userId;
     //收货人
-    @Column(nullable = true)
+    @Column(nullable = false)
     private String consignee;
-    @Column(length = 12,nullable = true)
+    @Column(length = 12,nullable = false)
     private Long phone;
-    @Column(nullable = true)
+    @Column(nullable = false)
     private String area;
-    @Column(nullable = true)
+    @Column(nullable = false)
     private String city;
-    @Column(nullable = true)
+    //县、市
+    @Column(nullable = false)
     private String counties;
+    //镇
     @Column
     private String town;
-    @Column(name="detailed_address",nullable = true)
+    //详细地址
+    @Column(name="detailed_address",nullable = false)
     private String detailedAddress;
-    @Column(name="update_time",nullable = true)
+    @Column(name="update_time",nullable = false)
     private Date updateTime = new Date();
 
     public Long getId() {
