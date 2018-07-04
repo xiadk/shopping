@@ -27,7 +27,7 @@ public class ZIBProductDto implements Serializable {
     //总量
     @Column(name="all_count",length = 6)
     private Long allCount;
-    @Column(name="update_time",nullable = true)
+    @Column(name="update_time",nullable = false)
     private Date updateTime = new Date();
 
     public Long getId() {

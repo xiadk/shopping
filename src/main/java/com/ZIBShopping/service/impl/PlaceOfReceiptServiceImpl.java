@@ -3,6 +3,7 @@ package com.ZIBShopping.service.impl;
 import com.ZIBShopping.dao.PlaceOfReceiptDao;
 import com.ZIBShopping.dto.PlaceOfReceiptDto;
 import com.ZIBShopping.service.PlaceOfReceiptService;
+import com.ZIBShopping.utils.SqlInjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,7 @@ public class PlaceOfReceiptServiceImpl implements PlaceOfReceiptService {
     private PlaceOfReceiptDao placeOfReceiptDao;
     @Override
     public List<PlaceOfReceiptDto> findPlaceOfReceiptDtosByUserIdOrderByUpdateTimeDesc(@NotNull String userId) {
+        userId = SqlInjectUtils.transactSQLInjection(userId);
         return placeOfReceiptDao.findPlaceOfReceiptDtosByUserIdOrderByUpdateTimeDesc(userId);
     }
 
