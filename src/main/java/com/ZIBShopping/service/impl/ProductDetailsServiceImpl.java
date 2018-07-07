@@ -9,6 +9,7 @@ import com.ZIBShopping.service.ZIBProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.Version;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
@@ -21,7 +22,7 @@ public class ProductDetailsServiceImpl implements ProductDetailsService {
     @Autowired
     private ProductDetailsDao productDetailsDao;
     @Override
-    public ProductDetailsDto findProductDetailsDto(@NotNull Long productId) {
+    public ProductDetailsDto findProductDetailsDto(@NotNull String productId) {
         return productDetailsDao.findProductDetailsDtoByProductId(productId);
     }
 }

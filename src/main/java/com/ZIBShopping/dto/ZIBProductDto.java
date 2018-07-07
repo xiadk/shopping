@@ -24,11 +24,21 @@ public class ZIBProductDto implements Serializable {
     //库存量
     @Column(name="repertory_count",length = 6)
     private Long repertoryCount;
+    @Column(name="img_url",nullable = false)
+    private String imgUrl;
     //总量
     @Column(name="all_count",length = 6)
     private Long allCount;
     @Column(name="update_time",nullable = false)
     private Date updateTime = new Date();
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
 
     public Long getId() {
         return id;
