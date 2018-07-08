@@ -16,11 +16,12 @@ public class PlaceOfReceiptDto implements Serializable {
     private Long id;
     @Column(name="user_id")
     private String userId;
+
     //收货人
     @Column(nullable = false)
-    private String consignee;
+    private String linkMan;
     @Column(length = 12,nullable = false)
-    private Long phone;
+    private Long mobile;
     @Column(nullable = false)
     private String area;
     @Column(nullable = false)
@@ -33,9 +34,20 @@ public class PlaceOfReceiptDto implements Serializable {
     private String town;
     //详细地址
     @Column(name="detailed_address",nullable = false)
-    private String detailedAddress;
+    private String address;
+    @Column(length = 6)
+    private Long code;
+    @Column(name = "is_default")
+    private Boolean isDefault = true;
     @Column(name="update_time",nullable = false)
     private Date updateTime = new Date();
+    public Long getCode() {
+        return code;
+    }
+
+    public void setCode(Long code) {
+        this.code = code;
+    }
 
     public Long getId() {
         return id;
@@ -43,6 +55,14 @@ public class PlaceOfReceiptDto implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Boolean getDefault() {
+        return isDefault;
+    }
+
+    public void setDefault(Boolean aDefault) {
+        isDefault = aDefault;
     }
 
     public String getUserId() {
@@ -53,20 +73,20 @@ public class PlaceOfReceiptDto implements Serializable {
         this.userId = userId;
     }
 
-    public String getConsignee() {
-        return consignee;
+    public String getLinkMan() {
+        return linkMan;
     }
 
-    public void setConsignee(String consignee) {
-        this.consignee = consignee;
+    public void setLinkMan(String linkMan) {
+        this.linkMan = linkMan;
     }
 
-    public Long getPhone() {
-        return phone;
+    public Long getMobile() {
+        return mobile;
     }
 
-    public void setPhone(Long phone) {
-        this.phone = phone;
+    public void setMobile(Long mobile) {
+        this.mobile = mobile;
     }
 
     public String getArea() {
@@ -101,12 +121,12 @@ public class PlaceOfReceiptDto implements Serializable {
         this.town = town;
     }
 
-    public String getDetailedAddress() {
-        return detailedAddress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setDetailedAddress(String detailedAddress) {
-        this.detailedAddress = detailedAddress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public Date getUpdateTime() {

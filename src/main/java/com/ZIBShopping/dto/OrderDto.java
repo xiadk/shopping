@@ -1,5 +1,7 @@
 package com.ZIBShopping.dto;
 
+import com.ZIBShopping.enums.OrderType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -28,8 +30,18 @@ public class OrderDto implements Serializable{
     private Long price;
     @Column(name="product_count",length = 6)
     private Long productCount;
-    @Column(name="update_time",nullable = true)
+    @Column(length = 30)
+    private OrderType types = OrderType.AWAIT_ORDERS;
+    @Column(name="update_time",nullable = false)
     private Date updateTime = new Date();
+
+    public OrderType getTypes() {
+        return types;
+    }
+
+    public void setTypes(OrderType types) {
+        this.types = types;
+    }
 
     public Long getId() {
         return id;

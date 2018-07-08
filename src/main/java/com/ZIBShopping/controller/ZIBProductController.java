@@ -1,14 +1,11 @@
 package com.ZIBShopping.controller;
 
-import com.ZIBShopping.dto.PlaceOfReceiptDto;
 import com.ZIBShopping.dto.ZIBProductDto;
 import com.ZIBShopping.service.ZIBProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 

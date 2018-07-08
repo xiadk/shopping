@@ -18,9 +18,9 @@ public class PlaceOfReceiptServiceImpl implements PlaceOfReceiptService {
     @Autowired
     private PlaceOfReceiptDao placeOfReceiptDao;
     @Override
-    public List<PlaceOfReceiptDto> findPlaceOfReceiptDtosByUserIdOrderByUpdateTimeDesc(@NotNull String userId) {
-        userId = SqlInjectUtils.transactSQLInjection(userId);
-        return placeOfReceiptDao.findPlaceOfReceiptDtosByUserIdOrderByUpdateTimeDesc(userId);
+    public List<PlaceOfReceiptDto> findPlaceOfReceiptDtosByUserIdOrderByUpdateTimeDesc(@NotNull String token) {
+        token = SqlInjectUtils.transactSQLInjection(token);
+        return placeOfReceiptDao.findPlaceOfReceiptDtosByTokenOrderByUpdateTimeDesc(token);
     }
 
     @Override
@@ -35,7 +35,9 @@ public class PlaceOfReceiptServiceImpl implements PlaceOfReceiptService {
 
     @Override
     public PlaceOfReceiptDto save(@NotNull PlaceOfReceiptDto placeOfReceiptDto) {
+        placeOfReceiptDao.update(true);
         PlaceOfReceiptDto porDto = placeOfReceiptDao.save(placeOfReceiptDto);
         return porDto;
     }
+
 }

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * zjh 2018.7.1
@@ -19,12 +18,12 @@ public class PlaceOfReceiptController {
     private PlaceOfReceiptService placeOfReceiptService;
 
     @ResponseBody
-    @RequestMapping(value = "addPlace",method = RequestMethod.POST)
+    @RequestMapping(value = "save",method = RequestMethod.POST)
     public PlaceOfReceiptDto addPlace(@RequestBody PlaceOfReceiptDto placeOfReceiptDto) {
-        if(placeOfReceiptDto.getConsignee()==null){
+        if(placeOfReceiptDto.getLinkMan()==null){
 
         }
-        if(placeOfReceiptDto.getPhone()==null){
+        if(placeOfReceiptDto.getMobile()==null){
 
         }
         if(placeOfReceiptDto.getArea()==null){
@@ -33,7 +32,7 @@ public class PlaceOfReceiptController {
         if(placeOfReceiptDto.getCity()==null){
 
         }
-        if(placeOfReceiptDto.getDetailedAddress()==null){
+        if(placeOfReceiptDto.getAddress()==null){
 
         }
         PlaceOfReceiptDto place =  placeOfReceiptDto!=null ? placeOfReceiptService.save(placeOfReceiptDto):null;
@@ -45,7 +44,11 @@ public class PlaceOfReceiptController {
 
     @ResponseBody
     @RequestMapping(value = "findAllPlace",method = RequestMethod.POST)
-    public List<PlaceOfReceiptDto> findPlaceOfReceiptDtos(@RequestParam String userId){
+    public List<PlaceOfReceiptDto> findPlaceOfReceiptDtos(@RequestParam String token){
+        String userId = "";
+        if(token!=null){
+
+        }
         List<PlaceOfReceiptDto> placeOfReceiptDtos = !userId.isEmpty() ? placeOfReceiptService.findPlaceOfReceiptDtosByUserIdOrderByUpdateTimeDesc(userId):null;
         return placeOfReceiptDtos;
     }
