@@ -10,5 +10,5 @@ import java.util.List;
  * zjh 2018.7.2
  */
 public interface ProductDetailsService {
-    ProductDetailsDto findProductDetailsDto(Long productId);
+    ProductDetailsDto findProductDetailsDto(String productId);
 }
