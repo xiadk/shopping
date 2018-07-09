@@ -7,6 +7,7 @@ import com.ZIBShopping.utils.SqlInjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
@@ -18,8 +19,7 @@ public class PlaceOfReceiptServiceImpl implements PlaceOfReceiptService {
     @Autowired
     private PlaceOfReceiptDao placeOfReceiptDao;
     @Override
-    public List<PlaceOfReceiptDto> findPlaceOfReceiptDtosByUserIdOrderByUpdateTimeDesc(@NotNull String userId) {
-        userId = SqlInjectUtils.transactSQLInjection(userId);
+    public List<PlaceOfReceiptDto> findPlaceOfReceiptDtosByUserIdOrderByUpdateTimeDesc(@NotNull Long userId) {
         return placeOfReceiptDao.findPlaceOfReceiptDtosByUserIdOrderByUpdateTimeDesc(userId);
     }
 
@@ -33,9 +33,12 @@ public class PlaceOfReceiptServiceImpl implements PlaceOfReceiptService {
         placeOfReceiptDao.deletePlaceOfReceiptDtoById(id);
     }
 
+    @Transactional
     @Override
     public PlaceOfReceiptDto save(@NotNull PlaceOfReceiptDto placeOfReceiptDto) {
+        placeOfReceiptDao.update(true);
         PlaceOfReceiptDto porDto = placeOfReceiptDao.save(placeOfReceiptDto);
         return porDto;
     }
+
 }

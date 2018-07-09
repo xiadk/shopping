@@ -24,8 +24,7 @@ public class OrderServiceImpl implements OrderService {
     private OrderDao orderDao;
 
     @Override
-    public List<OrderDto> findOrderDtos(String userId) {
-        userId = SqlInjectUtils.transactSQLInjection(userId);
+    public List<OrderDto> findOrderDtos(Long userId) {
         return orderDao.findOrderDtosByUserId(userId);
     }
 

@@ -7,6 +7,6 @@ import java.util.List;
  * zjh 2018.7.2
  */
 public interface OrderService {
-    List<OrderDto> findOrderDtos(String userId);
+    List<OrderDto> findOrderDtos(Long userId);
     OrderDto save(OrderDto orderDto);
 }
