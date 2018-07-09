@@ -19,7 +19,7 @@ public class OrderDto implements Serializable{
     @Id
     private Long id;
     @Column(name="user_id")
-    private String userId;
+    private Long userId;
     @Column(name="place_of_receipt_id")
     private String PlaceOfReceiptId;
     @Column(name="zib_product_id")
@@ -51,11 +51,11 @@ public class OrderDto implements Serializable{
         this.id = id;
     }
 
-    public String getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 

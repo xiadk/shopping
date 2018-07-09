@@ -28,7 +28,6 @@ public class LoginServierImpl implements LoginService {
     private UserDao userDao;
     @Autowired
     private UserService userService;
-    private JSONObject json = new JSONObject();
 
 
     @Override
@@ -66,13 +65,12 @@ public class LoginServierImpl implements LoginService {
 
                 return resultInfo;
             }
-
         }
         //存入缓存
         Map<String, String> tokenMap = new HashMap<>();
-        tokenMap.put(Constants.UID, String.valueOf(resultInfo.obj));
+        tokenMap.put(Constants.UID, String.valueOf(userDto == null ? resultInfo.obj:userDto.getId()));
         tokenMap.put(Constants.OPENID, json.getString(Constants.OPENID));
-        tokenMap.put(Constants.SESSION_KEY, json.getString(Constants.OPENID));
+        tokenMap.put(Constants.SESSION_KEY, json.getString(Constants.SESSION_KEY));
         redis.opsForHash().putAll(token, tokenMap);
 
         resultInfo.code = 1;

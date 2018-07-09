@@ -15,10 +15,10 @@ public class PlaceOfReceiptDto implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name="user_id")
-    private String userId;
+    private Long userId;
 
     //收货人
-    @Column(nullable = false)
+    @Column(name="link_man",nullable = false)
     private String linkMan;
     @Column(length = 12,nullable = false)
     private Long mobile;
@@ -57,19 +57,19 @@ public class PlaceOfReceiptDto implements Serializable {
         this.id = id;
     }
 
-    public Boolean getDefault() {
+    public Boolean getIsDefault() {
         return isDefault;
     }
 
-    public void setDefault(Boolean aDefault) {
+    public void setIsDefault(Boolean aDefault) {
         isDefault = aDefault;
     }
 
-    public String getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 

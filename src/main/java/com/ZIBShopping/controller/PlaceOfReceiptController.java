@@ -1,5 +1,7 @@
 package com.ZIBShopping.controller;
 
+import com.ZIBShopping.common.Annotation.CurrentUser;
+import com.ZIBShopping.common.Annotation.LoginRequired;
 import com.ZIBShopping.dto.PlaceOfReceiptDto;
 import com.ZIBShopping.service.PlaceOfReceiptService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +18,7 @@ import java.util.List;
 public class PlaceOfReceiptController {
     @Autowired
     private PlaceOfReceiptService placeOfReceiptService;
-
+    @LoginRequired
     @ResponseBody
     @RequestMapping(value = "save",method = RequestMethod.POST)
     public PlaceOfReceiptDto addPlace(@RequestBody PlaceOfReceiptDto placeOfReceiptDto) {
@@ -35,29 +37,27 @@ public class PlaceOfReceiptController {
         if(placeOfReceiptDto.getAddress()==null){
 
         }
-        PlaceOfReceiptDto place =  placeOfReceiptDto!=null ? placeOfReceiptService.save(placeOfReceiptDto):null;
+        PlaceOfReceiptDto placeDto = placeOfReceiptService.findPlaceOfReceiptDtoById(placeOfReceiptDto.getId());
+        placeDto.setIsDefault(placeOfReceiptDto.getIsDefault());
+        PlaceOfReceiptDto place =  placeDto!=null ? placeOfReceiptService.save(placeDto):null;
         if(place==null){
 
         }
         return place;
     }
-
+    @LoginRequired
     @ResponseBody
     @RequestMapping(value = "findAllPlace",method = RequestMethod.POST)
-    public List<PlaceOfReceiptDto> findPlaceOfReceiptDtos(@RequestParam String token){
-        String userId = "";
-        if(token!=null){
-
-        }
-        List<PlaceOfReceiptDto> placeOfReceiptDtos = !userId.isEmpty() ? placeOfReceiptService.findPlaceOfReceiptDtosByUserIdOrderByUpdateTimeDesc(userId):null;
+    public List<PlaceOfReceiptDto> findPlaceOfReceiptDtos(@CurrentUser Long userId){
+        List<PlaceOfReceiptDto> placeOfReceiptDtos = userId>-1 ? placeOfReceiptService.findPlaceOfReceiptDtosByUserIdOrderByUpdateTimeDesc(userId):null;
         return placeOfReceiptDtos;
     }
-
+    @LoginRequired
     @ResponseBody
     @RequestMapping(value = "deletePlace",method = RequestMethod.GET)
-    public List<PlaceOfReceiptDto> deletePlace(@RequestParam Long id,@RequestParam String userId){
+    public List<PlaceOfReceiptDto> deletePlace(@RequestParam Long id,@CurrentUser Long userId){
         placeOfReceiptService.deletePlaceOfReceiptDtoById(id);
-        List<PlaceOfReceiptDto> placeOfReceiptDtos = !userId.isEmpty() ? placeOfReceiptService.findPlaceOfReceiptDtosByUserIdOrderByUpdateTimeDesc(userId):null;
+        List<PlaceOfReceiptDto> placeOfReceiptDtos = userId>-1 ? placeOfReceiptService.findPlaceOfReceiptDtosByUserIdOrderByUpdateTimeDesc(userId):null;
         return placeOfReceiptDtos;
     }
 

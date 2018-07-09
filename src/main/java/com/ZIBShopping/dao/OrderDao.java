@@ -12,5 +12,5 @@ import java.util.List;
  */
 @Repository
 public interface OrderDao extends JpaRepository<OrderDto, Integer> {
-    List<OrderDto> findOrderDtosByUserId(String userId);
+    List<OrderDto> findOrderDtosByUserId(Long userId);
 }

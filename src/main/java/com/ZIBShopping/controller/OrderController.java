@@ -1,5 +1,7 @@
 package com.ZIBShopping.controller;
 
+import com.ZIBShopping.common.Annotation.CurrentUser;
+import com.ZIBShopping.common.Annotation.LoginRequired;
 import com.ZIBShopping.dto.OrderDto;
 import com.ZIBShopping.dto.ShoppingCarDto;
 import com.ZIBShopping.dto.ZIBProductDto;
@@ -28,9 +30,10 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
+    @LoginRequired
     @ResponseBody
     @RequestMapping(value = "findOrders", method = RequestMethod.GET)
-    public List<OrderDto> findOrders(@RequestParam String userId) {
+    public List<OrderDto> findOrders(@CurrentUser Long userId) {
         List<OrderDto> ls = orderService.findOrderDtos(userId);
         return ls;
     }

@@ -56,7 +56,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                 response.getWriter().write(result.toJSONString());
                 return false;
             }
-            Object uid =  redis.opsForHash().get(Constants.TOKEN,Constants.UID);
+            Object uid =  redis.opsForHash().get(accessToken,Constants.UID);
             if(uid == null) {
                 result.put("code","-1");
                 result.put("msg","no token，please login again");
