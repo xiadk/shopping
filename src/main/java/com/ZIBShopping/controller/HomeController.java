@@ -20,11 +20,15 @@ import java.util.Map;
  * zjh 2018.7.3
  */
 @Controller
-@RequestMapping("zib")
-public class ZibController {
+@RequestMapping("home")
+public class HomeController {
     @Autowired
     private IntroduceService introduceService;
 
+    /**
+     * 初始化数据
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "viewpager", method = RequestMethod.GET)
     public Map<String, List<String>> findOrders() {
