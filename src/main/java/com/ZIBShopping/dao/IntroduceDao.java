@@ -14,5 +14,5 @@ import java.util.List;
  */
 @Repository
 public interface IntroduceDao extends JpaRepository<IntrodueDto, Integer> {
-    IntrodueDto findIntrodueDtoByName(Introduce name);
+    IntrodueDto findIntrodueDtoByName(String name);
 }

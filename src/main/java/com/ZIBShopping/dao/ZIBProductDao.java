@@ -15,7 +15,7 @@ import java.util.List;
 @Repository
 public interface ZIBProductDao extends JpaRepository<ZIBProductDto, Integer> {
     @Query(value = "select * from zib_product z where update_time<:update_time order by update_time desc limit :row", nativeQuery = true)
-    List<ZIBProductDto> findZIBProductDtos(@Param("update_time") String updateTime, @Param("row") Long row);
+    List<ZIBProductDto> findZIBProductDtos(@Param("update_time") String updateTime, @Param("row") int row);
 
     @Query(value = "select * from zib_product z  order by sales_count desc limit :amount ", nativeQuery = true)
     ZIBProductDto findZIBProductDto(@Param("amount") Long count);

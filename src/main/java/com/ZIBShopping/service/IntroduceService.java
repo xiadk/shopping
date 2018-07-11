@@ -11,6 +11,6 @@ import java.util.Map;
  * zjh 2018.7.8
  */
 public interface IntroduceService {
-    List<String> find(Introduce name);
+    List<String> find(Introduce introduce);
     Map<String,List<String>> findAll();
 }

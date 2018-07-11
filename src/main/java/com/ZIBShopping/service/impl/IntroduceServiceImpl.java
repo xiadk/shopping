@@ -24,8 +24,8 @@ public class IntroduceServiceImpl implements IntroduceService {
     @Autowired
     private IntroduceDao introduceDao;
     @Override
-    public List<String> find(Introduce name) {
-        IntrodueDto introdueDto = introduceDao.findIntrodueDtoByName(name);
+    public List<String> find(Introduce introduce) {
+        IntrodueDto introdueDto = introduceDao.findIntrodueDtoByName(introduce.toString());
         List<String> imgs = ImgUrlUtils.analysis(introdueDto.getImgUrl(),";");
         return imgs;
     }
