@@ -1,8 +1,11 @@
 package com.ZIBShopping.enums;
 
 public enum OrderType {
-    AWAIT_ORDERS("待发货"),
-    AWAIT_GOODS("待收货"),
+    AWAIT_PAY("待付款"),
+    AWAIT_SEND("待发货"),
+    AWAIT_RECEIVE("待收货"),
+    AWAIT_REMARK("待评价"),
+    CLOSE("取消"),
     FINISH("已完成");
     private final String name;
 

@@ -2,10 +2,7 @@ package com.ZIBShopping.dto;
 
 import com.ZIBShopping.enums.OrderType;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -17,30 +14,90 @@ import java.util.Date;
 @Table(name = "zib_order")
 public class OrderDto implements Serializable{
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name="user_id")
     private Long userId;
+    @Column(name="logistics_id")
+    private String logisticsId;
     @Column(name="place_of_receipt_id")
-    private String PlaceOfReceiptId;
+    private String placeOfReceiptId;
     @Column(name="zib_product_id")
-    private String ZIBProductId;
-    @Column(name="zib_product_name",length = 30)
-    private String ZIBProductName;
+    private String productId;
+    @Column
+    private String pic;
+    @Column(name="goods_name")
+    private String goodsName;
     @Column(length = 6)
     private Long price;
+    //购买产品数量
     @Column(name="product_count",length = 6)
     private Long productCount;
-    @Column(length = 30)
-    private OrderType types = OrderType.AWAIT_ORDERS;
+    @Column
+    private String remark;
+    @Column(length = 2)
+    private Long status = 0l;
+    @Column(name = "order_number")
+    private String orderNumber;
+    @Column(name = "status_value",length = 30)
+    private String statusValue = OrderType.AWAIT_PAY.getName();
     @Column(name="update_time",nullable = false)
     private Date updateTime = new Date();
 
-    public OrderType getTypes() {
-        return types;
+    public String getLogisticsId() {
+        return logisticsId;
     }
 
-    public void setTypes(OrderType types) {
-        this.types = types;
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public void setLogisticsId(String logisticsId) {
+        this.logisticsId = logisticsId;
+    }
+
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic(String pic) {
+        this.pic = pic;
+    }
+
+    public String getGoodsName() {
+        return goodsName;
+    }
+
+    public void setGoodsName(String goodsName) {
+        this.goodsName = goodsName;
+    }
+
+    public Long getStatus() {
+        return status;
+    }
+
+    public void setStatus(Long status) {
+        this.status = status;
+    }
+
+    public String getOrderNumber() {
+        return orderNumber;
+    }
+
+    public void setOrderNumber(String orderNumber) {
+        this.orderNumber = orderNumber;
+    }
+
+    public String getStatusValue() {
+        return statusValue;
+    }
+
+    public void setStatusValue(String statusValue) {
+        this.statusValue = statusValue;
     }
 
     public Long getId() {
@@ -60,27 +117,19 @@ public class OrderDto implements Serializable{
     }
 
     public String getPlaceOfReceiptId() {
-        return PlaceOfReceiptId;
+        return placeOfReceiptId;
     }
 
     public void setPlaceOfReceiptId(String placeOfReceiptId) {
-        PlaceOfReceiptId = placeOfReceiptId;
+        this.placeOfReceiptId = placeOfReceiptId;
     }
 
-    public String getZIBProductId() {
-        return ZIBProductId;
+    public String getProductId() {
+        return productId;
     }
 
-    public void setZIBProductId(String ZIBProductId) {
-        this.ZIBProductId = ZIBProductId;
-    }
-
-    public String getZIBProductName() {
-        return ZIBProductName;
-    }
-
-    public void setZIBProductName(String ZIBProductName) {
-        this.ZIBProductName = ZIBProductName;
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 
     public Long getPrice() {
