@@ -48,7 +48,6 @@ public class ZbApplicationTests {
 
      @Test
     public void test() {
-
          /*Map<String,String> map = new HashMap<>();
          map.put("appid",weixiConfig.getAppid());
          map.put("secret",weixiConfig.getAppsecret());
