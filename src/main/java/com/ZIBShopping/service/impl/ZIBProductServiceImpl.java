@@ -18,7 +18,7 @@ public class ZIBProductServiceImpl implements ZIBProductService {
     @Autowired
     private ZIBProductDao zibProductDao;
     @Override
-    public List<ZIBProductDto> findPage(@NotNull String updateTime,@NotNull Long row) {
+    public List<ZIBProductDto> findPage(@NotNull String updateTime,@NotNull int row) {
         return zibProductDao.findZIBProductDtos(updateTime,row);
     }
 

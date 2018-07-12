@@ -20,13 +20,18 @@ public class ZIBProductController {
     private ZIBProductService zibProductService;
     @ResponseBody
     @RequestMapping(value = "findProduct",method = RequestMethod.GET)
-    public List<ZIBProductDto> findPlaceOfReceiptDto(@RequestParam String updateTime, @RequestParam Long row){
+    public List<ZIBProductDto> findPlaceOfReceiptDto(@RequestParam String updateTime, @RequestParam int row){
         List<ZIBProductDto> ls = zibProductService.findPage(updateTime,row);
         return ls;
     }
 
+    /**
+     * 首页
+     * @param map
+     * @return
+     */
     @ResponseBody
-    @RequestMapping(value = "recommend",method = RequestMethod.POST)
+    @RequestMapping(value = "recommend",method = RequestMethod.GET)
     public ZIBProductDto recommendProduct(@RequestBody Map<String,Long> map){
         return zibProductService.recommendProduct(map.get("count"));
     }

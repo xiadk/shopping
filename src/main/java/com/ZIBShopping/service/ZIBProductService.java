@@ -14,7 +14,7 @@ public interface ZIBProductService {
      * @param row        每次列出数量
      * @return
      */
-    List<ZIBProductDto> findPage(String updateTime, Long row);
+    List<ZIBProductDto> findPage(String updateTime, int row);
 
     /**
      * 推荐商品
