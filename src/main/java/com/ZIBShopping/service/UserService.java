@@ -13,5 +13,5 @@ public interface UserService {
     ResultInfo save(Map<String, Object> userInfo);
     //查询用户信息
     ResultInfo findUserByOpenid(String openid);
-
+    String getOpenId(Long userId);
 }

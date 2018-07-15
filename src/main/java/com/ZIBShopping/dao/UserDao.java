@@ -18,4 +18,5 @@ import java.util.List;
 public interface UserDao extends JpaRepository<UserDto, Integer> {
 //    @Query(value="select * from zib_user where openid=:openid")
     UserDto findUserDtoByOpenid( String openid);
+    UserDto findUserDtoById(Long userId);
 }
