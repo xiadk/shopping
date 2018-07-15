@@ -61,4 +61,13 @@ public class UserServierImpl implements UserService {
 
         return null;
     }
+
+    @Override
+    public String getOpenId(Long userId) {
+        UserDto user = userDao.findUserDtoById(userId);
+        if(user==null){
+            return null;
+        }
+        return user.getOpenid();
+    }
 }
