@@ -3,6 +3,7 @@ package com.ZIBShopping.controller;
 import com.ZIBShopping.common.Annotation.CurrentUser;
 import com.ZIBShopping.common.Annotation.LoginRequired;
 import com.ZIBShopping.dto.*;
+import com.ZIBShopping.entity.Logistics;
 import com.ZIBShopping.entity.Pay;
 import com.ZIBShopping.enums.OrderType;
 import com.ZIBShopping.service.OrderService;
@@ -42,9 +43,41 @@ public class OrderController {
     public Map<String,Object> findOrders(@CurrentUser Long userId, @RequestParam OrderType statusType) {
         Map<String,Object> map = new HashMap<>();
         List<OrderDto> ls = orderService.findOrderDtos(userId,statusType);
-        Integer code = (ls==null||ls.size()<=0)? -1:0;
+        Integer code = (ls==null||ls.size()<=0)? 1:0;
         map.put("code",code);
         map.put("orders",ls);
+        return map;
+    }
+
+    /**
+     * 商家获取所有订单信息
+     * @param statusType
+     * @return
+     */
+    @LoginRequired
+    @ResponseBody
+    @RequestMapping(value = "businessOrders", method = RequestMethod.GET)
+    public Map<String,Object> businessOrders(@RequestParam OrderType statusType) {
+        Map<String,Object> map = new HashMap<>();
+        List<OrderDto> ls = orderService.businessGetOrder(statusType.getName());
+        Integer code = (ls==null||ls.size()<=0)? 1:0;
+        map.put("code",code);
+        map.put("orders",ls);
+        return map;
+    }
+
+    @LoginRequired
+    @ResponseBody
+    @RequestMapping(value = "isBusiness", method = RequestMethod.GET)
+    public Map<String,Object> isBusiness(@CurrentUser Long userId) {
+        Map<String,Object> map = new HashMap<>();
+        map.put("code",0);
+        map.put("isBusiness",false);
+        if(userId == 7l){
+            map.put("code",1);
+            map.put("isBusiness",true);
+        }
+
         return map;
     }
 
@@ -98,6 +131,36 @@ public class OrderController {
             map.put("code","1");
         }
 
+        return map;
+    }
+
+    /**
+     * 发货
+     * @param logistics
+     * @return
+     */
+    @LoginRequired
+    @ResponseBody
+    @RequestMapping(value = "sendGoods", method = RequestMethod.POST)
+    public Map<String,Object> sendGoods(@RequestBody Logistics logistics) {
+        Map<String,Object> map = new HashMap<>();
+        LogisticsDto logisticsDto = new LogisticsDto();
+        logisticsDto.setLinkMan(logistics.getLinkMan());
+        logisticsDto.setTrackingNumber(logistics.getTrackingNumber());
+        logisticsDto.setMobile(logistics.getMobile());
+        logisticsDto.setAddress(logistics.getAddress());
+        //保存快递信息
+        LogisticsDto logisticsDto1= orderService.saveLogistics(logisticsDto);
+        if(logisticsDto1==null){
+            map.put("code",1);
+            return map;
+        }
+        OrderDto order = orderService.getOrder(logistics.getId());
+        order.setLogisticsId(logisticsDto1.getId()+"");
+        order.setStatus(2l);
+        order.setStatusValue(OrderType.AWAIT_RECEIVE.getName());
+        orderService.save(order);
+        map.put("code",0);
         return map;
     }
 }

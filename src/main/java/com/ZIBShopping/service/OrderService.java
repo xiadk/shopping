@@ -1,5 +1,6 @@
 package com.ZIBShopping.service;
 
+import com.ZIBShopping.dto.LogisticsDto;
 import com.ZIBShopping.dto.OrderDto;
 import com.ZIBShopping.dto.ReputationDto;
 import com.ZIBShopping.enums.OrderType;
@@ -48,4 +49,20 @@ public interface OrderService {
      * @return
      */
     Map<String,Object> reputation(ReputationDto reputationDto);
+
+    /**
+     * 生成快递信息
+     * @param logistics
+     * @return
+     */
+    LogisticsDto saveLogistics(LogisticsDto logistics);
+
+    /**
+     * 获取订单
+     * @param id
+     * @return
+     */
+    OrderDto getOrder(Long id);
+
+    List<OrderDto> businessGetOrder(String statusValue);
 }

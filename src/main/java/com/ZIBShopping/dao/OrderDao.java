@@ -22,4 +22,6 @@ public interface OrderDao extends JpaRepository<OrderDto, Integer> {
     void update(@Param("id")Long id,@Param("status") String status,@Param("val")Long val);
 
     OrderDto findOrderDtoById(Long id);
+
+    List<OrderDto> findOrderDtosByStatusValue(String statusValue);
 }
