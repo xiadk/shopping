@@ -86,4 +86,20 @@ public class OrderServiceImpl implements OrderService {
         }
         return map;
     }
+
+    @Override
+    public LogisticsDto saveLogistics(LogisticsDto logistics) {
+
+        return logisticsDao.save(logistics);
+    }
+
+    @Override
+    public OrderDto getOrder(Long id) {
+        return orderDao.findOrderDtoById(id);
+    }
+
+    @Override
+    public List<OrderDto> businessGetOrder(String statusValue) {
+        return orderDao.findOrderDtosByStatusValue(statusValue);
+    }
 }
